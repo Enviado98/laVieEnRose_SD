@@ -30,6 +30,9 @@
                         'rose-dark': '#c9184a', /* Rosa Intenso */
                         'rose-bg': '#fff0f3',   /* Fondo Suave */
                         'gold': '#d4af37',
+                    },
+                    animation: {
+                        'pulse-slow': 'pulse 3s cubic-bezier(0.4, 0, 0.6, 1) infinite',
                     }
                 }
             }
@@ -104,9 +107,9 @@
                     <i class="ph-bold ph-globe"></i> <span id="lang-text">ES</span>
                 </button>
                 
-                <a href="https://wa.me/593988165498" class="bg-rose-dark hover:bg-rose-main text-white px-5 py-2 rounded-full font-bold shadow-lg shadow-rose-500/30 transition-all flex items-center gap-2 text-sm transform hover:-translate-y-0.5">
-                    <i class="ph-bold ph-whatsapp-logo"></i> 
-                    <span class="lang" data-es="Reservar" data-en="Book Now">Reservar</span>
+                <a href="#menu" class="bg-rose-dark hover:bg-rose-main text-white px-5 py-2 rounded-full font-bold shadow-lg shadow-rose-500/30 transition-all flex items-center gap-2 text-sm transform hover:-translate-y-0.5">
+                    <i class="ph-bold ph-fork-knife"></i> 
+                    <span class="lang" data-es="Ver Menú" data-en="View Menu">Ver Menú</span>
                 </a>
             </div>
         </div>
@@ -142,7 +145,7 @@
                 </div>
             </div>
 
-            <!-- PANEL DE HORARIOS (Estilo Esquina Catracha corregido) -->
+            <!-- PANEL DE HORARIOS -->
             <div class="relative z-10 reveal active delay-100 w-full max-w-md mx-auto">
                 <div class="glass-panel rounded-3xl overflow-hidden p-1 shadow-2xl">
                     <!-- Cabecera Clickable -->
@@ -253,17 +256,12 @@
     </section>
 
     <!-- FOOTER -->
-    <footer class="bg-gray-900 text-white py-12 border-t border-rose-900">
+    <footer class="bg-gray-900 text-white py-12 border-t border-rose-900 mb-20 md:mb-0">
         <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
             
             <div class="text-center md:text-left">
                 <h3 class="font-serif text-3xl font-bold mb-4 text-rose-main">laVieEnRose</h3>
                 <p class="text-gray-400 mb-6 max-w-sm mx-auto md:mx-0">Av. La Lorena & Santo Domingo, Ecuador</p>
-                <div class="flex gap-4 justify-center md:justify-start">
-                    <a href="https://wa.me/593988165498" class="bg-rose-main hover:bg-white hover:text-rose-dark text-gray-900 px-6 py-3 rounded-xl font-bold transition-all">
-                        <i class="ph-bold ph-whatsapp-logo"></i> Contáctanos
-                    </a>
-                </div>
             </div>
 
             <!-- Mapa Estático -->
@@ -276,6 +274,25 @@
             &copy; 2026 La Vie en Rose. All rights reserved.
         </div>
     </footer>
+
+    <!-- BOTONES FLOTANTES (NUEVO) -->
+    <div class="fixed bottom-6 right-6 z-50 flex flex-col gap-4 items-end">
+        
+        <!-- Botón Llamar (Solo Móvil) -->
+        <a href="tel:+593988165498" class="md:hidden w-14 h-14 bg-white text-rose-dark rounded-full shadow-lg flex items-center justify-center border-2 border-rose-100 hover:scale-110 transition-transform duration-300">
+            <i class="ph-fill ph-phone-call text-2xl animate-pulse-slow"></i>
+        </a>
+
+        <!-- Botón WhatsApp (Principal) -->
+        <a href="https://wa.me/593988165498?text=Hola,%20quisiera%20reservar." target="_blank" class="group relative w-16 h-16 bg-[#25D366] text-white rounded-full shadow-2xl flex items-center justify-center hover:scale-110 transition-transform duration-300 hover:shadow-[0_10px_30px_rgba(37,211,102,0.4)]">
+            <i class="ph-fill ph-whatsapp-logo text-3xl"></i>
+            
+            <!-- Tooltip (Solo Desktop) -->
+            <span class="absolute right-full mr-3 bg-white text-gray-800 px-3 py-1.5 rounded-xl text-xs font-bold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap pointer-events-none hidden md:block border border-gray-100">
+                <span class="lang" data-es="¡Escríbenos!" data-en="Chat with us!">¡Escríbenos!</span>
+            </span>
+        </a>
+    </div>
 
     <!-- LÓGICA -->
     <script>
@@ -297,11 +314,8 @@
         function toggleHours() {
             const list = document.getElementById('hours-list');
             const chevron = document.getElementById('chevron');
-            
-            // Alternar clase active
             list.classList.toggle('active');
             
-            // Rotar flecha
             if (list.classList.contains('active')) {
                 chevron.style.transform = 'rotate(180deg)';
             } else {
