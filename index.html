@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- SEO & META -->
+    <title>La Vie en Rose | Café & Bistro en Santo Domingo</title>
+    <meta name="description" content="El lugar más aesthetic de Santo Domingo. Pink Burgers, Tigrillos, Bolones y Café. Av. La Lorena.">
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts: Playfair Display (Elegante) y Lato (Moderno) -->
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Iconos -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Lato', 'sans-serif'],
+                        serif: ['Playfair Display', 'serif'],
+                    },
+                    colors: {
+                        'rose-main': '#ff8fab', /* Rosa Principal */
+                        'rose-dark': '#c9184a', /* Rosa Oscuro */
+                        'rose-light': '#ffe5ec', /* Rosa Claro */
+                        'rose-gold': '#d4af37', /* Dorado */
+                        'text-dark': '#4a4a4a',
+                    },
+                    backgroundImage: {
+                        'flower-pattern': "url('https://www.transparenttextures.com/patterns/flower-trail.png')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        /* Fondo Hero Elegante */
+        .hero-bg {
+            background-image: linear-gradient(to right, rgba(255, 240, 245, 0.9), rgba(255, 255, 255, 0.6)), url('https://images.unsplash.com/photo-1554118811-1e0d58224f24?q=80&w=1920');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+        }
+
+        /* Efecto Cristal Rosa */
+        .glass-rose {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(15px);
+            border: 1px solid rgba(255, 192, 203, 0.3);
+            box-shadow: 0 8px 32px 0 rgba(255, 105, 180, 0.1);
+        }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Animación suave para imágenes */
+        .hover-zoom img {
+            transition: transform 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        .hover-zoom:hover img {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body class="bg-[#fff0f3] text-text-dark antialiased selection:bg-rose-main selection:text-white">
+
+    <!-- NAVBAR FLOTANTE -->
+    <nav class="fixed w-full z-50 top-0 left-0 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm border-b border-rose-100 py-3">
+        <div class="container mx-auto px-6 flex justify-between items-center">
+            <a href="#" class="flex items-center gap-2 group">
+                <span class="bg-rose-main text-white p-2 rounded-full shadow-lg group-hover:rotate-12 transition-transform">
+                    <i class="ph-fill ph-flower-lotus text-xl"></i>
+                </span>
+                <span class="font-serif font-bold text-2xl text-rose-dark tracking-wide">laVieEnRose</span>
+            </a>
+
+            <div class="flex items-center gap-4">
+                <!-- Toggle Idioma -->
+                <button onclick="toggleLanguage()" class="hidden md:flex items-center gap-1 text-xs font-bold text-rose-dark border border-rose-200 px-3 py-1 rounded-full hover:bg-rose-50 transition-colors">
+                    <i class="ph-bold ph-globe"></i>
+                    <span id="lang-text">ES</span>
+                </button>
+
+                <a href="https://wa.me/593988165498" target="_blank" class="bg-rose-dark hover:bg-rose-main text-white px-6 py-2 rounded-full font-bold shadow-lg shadow-rose-500/30 transition-all flex items-center gap-2 transform hover:-translate-y-0.5 text-sm">
+                    <i class="ph-bold ph-whatsapp-logo"></i> 
+                    <span class="lang" data-es="Reservar" data-en="Book Table">Reservar</span>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <header class="hero-bg min-h-screen flex items-center relative pt-20">
+        <div class="absolute inset-0 bg-flower-pattern opacity-30 pointer-events-none"></div>
+        
+        <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-2 gap-12 items-center relative z-10">
+            <!-- Texto -->
+            <div class="text-center md:text-left reveal active">
+                <div class="inline-block bg-white/80 border border-rose-200 text-rose-dark px-4 py-1 rounded-full text-xs font-bold uppercase tracking-widest mb-6 shadow-sm">
+                    <i class="ph-fill ph-heart mr-1"></i> Santo Domingo, Ecuador
+                </div>
+                
+                <h1 class="font-serif text-5xl md:text-7xl font-bold text-gray-900 leading-tight mb-6">
+                    <span class="lang" data-es="La vida es más" data-en="Life is more">La vida es más</span> <br>
+                    <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-rose-300 italic">
+                        <span class="lang" data-es="bella en rosa" data-en="beautiful in pink">bella en rosa</span>
+                    </span>.
+                </h1>
+                
+                <p class="text-lg text-gray-600 mb-8 font-light leading-relaxed max-w-lg mx-auto md:mx-0 lang" 
+                   data-es="Disfruta de nuestra famosa Pink Burger, Tigrillos y el mejor ambiente aesthetic de la ciudad."
+                   data-en="Enjoy our famous Pink Burger, Tigrillos and the best aesthetic atmosphere in the city.">
+                   Disfruta de nuestra famosa Pink Burger, Tigrillos y el mejor ambiente aesthetic de la ciudad.
+                </p>
+
+                <div class="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
+                    <a href="#menu" class="bg-rose-dark text-white px-8 py-4 rounded-xl font-bold shadow-xl hover:shadow-2xl hover:bg-rose-600 transition-all flex items-center justify-center gap-2">
+                        <i class="ph-bold ph-fork-knife"></i> <span class="lang" data-es="Ver Menú" data-en="View Menu">Ver Menú</span>
+                    </a>
+                    <div onclick="toggleHours()" class="cursor-pointer glass-rose px-6 py-4 rounded-xl flex items-center justify-center gap-3 hover:bg-white transition-colors group">
+                        <span class="relative flex h-3 w-3">
+                          <span id="status-ping" class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                          <span id="status-dot" class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                        </span>
+                        <div class="text-left leading-none">
+                            <span id="status-text" class="block font-bold text-sm text-gray-800">ABIERTO</span>
+                            <span class="text-[10px] text-gray-500 font-bold tracking-wider">08:30 - 20:30</span>
+                        </div>
+                        <i class="ph-bold ph-caret-down text-rose-400 group-hover:translate-y-1 transition-transform"></i>
+                    </div>
+                </div>
+
+                <!-- Desplegable de Horarios -->
+                <div id="hours-dropdown" class="hidden mt-4 glass-rose rounded-xl p-4 max-w-xs mx-auto md:mx-0 absolute z-50 shadow-xl">
+                    <p class="text-xs text-center text-rose-400 font-bold mb-2 uppercase border-b border-rose-100 pb-2">Horario de Atención</p>
+                    <div class="flex justify-between text-sm mb-1">
+                        <span class="text-gray-600">Lunes - Domingo</span>
+                        <span class="font-bold text-rose-dark">08:30 - 20:30</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Imágenes Flotantes -->
+            <div class="relative hidden md:block h-[600px] w-full reveal active delay-100">
+                <!-- Imagen Principal (Burger) -->
+                <div class="absolute top-10 right-10 w-80 h-96 rounded-[2rem] overflow-hidden shadow-2xl border-4 border-white transform rotate-3 hover:rotate-0 transition-all duration-500 z-20">
+                    <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=600" alt="Ambiente" class="w-full h-full object-cover">
+                </div>
+                <!-- Imagen Secundaria (Coffee) -->
+                <div class="absolute bottom-20 left-10 w-64 h-64 rounded-full overflow-hidden shadow-2xl border-4 border-white transform -rotate-3 hover:rotate-0 transition-all duration-500 z-10 animate-float">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?q=80&w=600" alt="Pink Latte" class="w-full h-full object-cover">
+                </div>
+                <!-- Decorative Element -->
+                <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-rose-200 rounded-full blur-[100px] -z-10 opacity-50"></div>
+            </div>
+        </div>
+    </header>
+
+    <!-- MENÚ DESTACADO -->
+    <section id="menu" class="py-24 relative overflow-hidden">
+        <div class="container mx-auto px-6">
+            <div class="text-center mb-16 reveal">
+                <i class="ph-fill ph-sparkle text-3xl text-rose-gold mb-4 animate-pulse"></i>
+                <h2 class="font-serif text-4xl md:text-5xl font-bold text-gray-900 mb-4">
+                    <span class="lang" data-es="Nuestros Favoritos" data-en="Our Favorites">Nuestros Favoritos</span>
+                </h2>
+                <p class="text-gray-500 font-light lang" data-es="Platos diseñados para enamorar tu paladar" data-en="Dishes designed to make your palate fall in love">Platos diseñados para enamorar tu paladar</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                
+                <!-- PINK BURGER -->
+                <div class="bg-white rounded-3xl p-4 shadow-lg hover:shadow-2xl transition-all duration-300 group reveal">
+                    <div class="relative h-64 rounded-2xl overflow-hidden mb-6 hover-zoom">
+                        <div class="absolute top-3 left-3 bg-rose-dark text-white text-xs font-bold px-3 py-1 rounded-full z-10">Signature</div>
+                        <!-- Imagen referencial de hamburguesa gourmet -->
+                        <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=600" alt="Pink Burger" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex justify-between items-end mb-2">
+                        <h3 class="font-serif font-bold text-xl text-gray-800">Pink Burger</h3>
+                        <span class="font-bold text-rose-dark text-xl">$6.50</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-4 leading-relaxed lang" data-es="Pan rosa artesanal, 200g de res, queso fundido, tocino y mayonesa de la casa." data-en="Artisan pink bun, 200g beef, melted cheese, bacon and house mayo.">
+                        Pan rosa artesanal, 200g de res, queso fundido, tocino y mayonesa de la casa.
+                    </p>
+                    <button class="w-full py-3 rounded-xl border border-rose-200 text-rose-dark font-bold hover:bg-rose-50 transition-colors flex items-center justify-center gap-2">
+                        <i class="ph-bold ph-plus"></i> <span class="lang" data-es="Ordenar" data-en="Order">Ordenar</span>
+                    </button>
+                </div>
+
+                <!-- TIGRILLO ROSE -->
+                <div class="bg-white rounded-3xl p-4 shadow-lg hover:shadow-2xl transition-all duration-300 group reveal delay-100">
+                    <div class="relative h-64 rounded-2xl overflow-hidden mb-6 hover-zoom">
+                        <img src="https://i.pinimg.com/736x/8f/c9/79/8fc979808a38a5b28795551921312386.jpg" alt="Tigrillo" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex justify-between items-end mb-2">
+                        <h3 class="font-serif font-bold text-xl text-gray-800">Tigrillo Rose</h3>
+                        <span class="font-bold text-rose-dark text-xl">$4.50</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-4 leading-relaxed lang" data-es="El clásico verde majado con queso y chicharrón, estilo único de la casa." data-en="Classic mashed green plantain with cheese and crispy pork belly, house style.">
+                        El clásico verde majado con queso y chicharrón, estilo único de la casa.
+                    </p>
+                    <button class="w-full py-3 rounded-xl border border-rose-200 text-rose-dark font-bold hover:bg-rose-50 transition-colors flex items-center justify-center gap-2">
+                        <i class="ph-bold ph-plus"></i> <span class="lang" data-es="Ordenar" data-en="Order">Ordenar</span>
+                    </button>
+                </div>
+
+                <!-- MEGA BOLÓN -->
+                <div class="bg-white rounded-3xl p-4 shadow-lg hover:shadow-2xl transition-all duration-300 group reveal delay-200">
+                    <div class="relative h-64 rounded-2xl overflow-hidden mb-6 hover-zoom">
+                        <div class="absolute top-3 left-3 bg-yellow-400 text-black text-xs font-bold px-3 py-1 rounded-full z-10">Best Seller</div>
+                        <img src="https://pbs.twimg.com/media/F3F8WJYW8AAhM4H.jpg:large" alt="Bolon" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex justify-between items-end mb-2">
+                        <h3 class="font-serif font-bold text-xl text-gray-800">Mega Bolón</h3>
+                        <span class="font-bold text-rose-dark text-xl">$5.00</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-4 leading-relaxed lang" data-es="Bolón de queso o chicharrón, salsa de queso, huevo frito y jugo de carne." data-en="Cheese or pork plantain ball, cheese sauce, fried egg and meat gravy.">
+                        Bolón de queso o chicharrón, salsa de queso, huevo frito y jugo de carne.
+                    </p>
+                    <button class="w-full py-3 rounded-xl border border-rose-200 text-rose-dark font-bold hover:bg-rose-50 transition-colors flex items-center justify-center gap-2">
+                        <i class="ph-bold ph-plus"></i> <span class="lang" data-es="Ordenar" data-en="Order">Ordenar</span>
+                    </button>
+                </div>
+
+                <!-- SANDWICH A LA VIANDE -->
+                <div class="bg-white rounded-3xl p-4 shadow-lg hover:shadow-2xl transition-all duration-300 group reveal delay-300">
+                    <div class="relative h-64 rounded-2xl overflow-hidden mb-6 hover-zoom">
+                        <img src="https://images.unsplash.com/photo-1553909489-cd47e3b4430c?q=80&w=600" alt="Sandwich" class="w-full h-full object-cover">
+                    </div>
+                    <div class="flex justify-between items-end mb-2">
+                        <h3 class="font-serif font-bold text-xl text-gray-800">Sandwich Viande</h3>
+                        <span class="font-bold text-rose-dark text-xl">$6.50</span>
+                    </div>
+                    <p class="text-sm text-gray-500 mb-4 leading-relaxed lang" data-es="Pan baguette, carne mechada, cebolla caramelizada y queso holandés." data-en="Baguette bread, shredded beef, caramelized onions and dutch cheese.">
+                        Pan baguette, carne mechada, cebolla caramelizada y queso holandés.
+                    </p>
+                    <button class="w-full py-3 rounded-xl border border-rose-200 text-rose-dark font-bold hover:bg-rose-50 transition-colors flex items-center justify-center gap-2">
+                        <i class="ph-bold ph-plus"></i> <span class="lang" data-es="Ordenar" data-en="Order">Ordenar</span>
+                    </button>
+                </div>
+
+            </div>
+            
+            <div class="mt-12 text-center">
+                <a href="#" class="inline-flex items-center gap-2 text-rose-dark font-bold border-b-2 border-rose-300 hover:text-rose-600 transition-colors pb-1">
+                    <span class="lang" data-es="Ver todo el menú" data-en="View full menu">Ver todo el menú</span> <i class="ph-bold ph-arrow-right"></i>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- UBICACIÓN Y FOOTER -->
+    <footer class="bg-gray-900 text-white pt-20 pb-10 rounded-t-[3rem] relative mt-10">
+        <div class="container mx-auto px-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-16">
+                
+                <div>
+                    <h3 class="font-serif text-3xl font-bold mb-6">laVieEnRose</h3>
+                    <p class="text-gray-400 mb-8 max-w-sm lang" data-es="Un espacio creado para disfrutar de los pequeños placeres de la vida. Café, comida y buena compañía." data-en="A space created to enjoy the little pleasures of life. Coffee, food and good company.">
+                        Un espacio creado para disfrutar de los pequeños placeres de la vida. Café, comida y buena compañía.
+                    </p>
+                    
+                    <div class="space-y-4">
+                        <div class="flex items-center gap-4 group cursor-pointer hover:text-rose-400 transition-colors">
+                            <div class="bg-gray-800 p-3 rounded-full group-hover:bg-rose-900 transition-colors">
+                                <i class="ph-fill ph-map-pin text-rose-400"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-sm text-gray-300">Av. La Lorena</p>
+                                <p class="text-xs text-gray-500">Santo Domingo, Ecuador</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-center gap-4 group cursor-pointer hover:text-rose-400 transition-colors">
+                            <div class="bg-gray-800 p-3 rounded-full group-hover:bg-rose-900 transition-colors">
+                                <i class="ph-fill ph-clock text-rose-400"></i>
+                            </div>
+                            <div>
+                                <p class="font-bold text-sm text-gray-300 lang" data-es="Lunes a Domingo" data-en="Monday to Sunday">Lunes a Domingo</p>
+                                <p class="text-xs text-gray-500">08:30 - 20:30</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Mapa embebido -->
+                <div class="h-64 md:h-80 w-full rounded-2xl overflow-hidden shadow-2xl border border-gray-700 relative group">
+                    <!-- Coordenadas aproximadas de Av La Lorena Santo Domingo -->
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3989.704283876543!2d-79.1695!3d-0.2546!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x91d545f8f8888888%3A0x8888888888888888!2sAv.%20La%20Lorena%2C%20Santo%20Domingo%2C%20Ecuador!5e0!3m2!1ses!2sus!4v1620000000000!5m2!1ses!2sus" width="100%" height="100%" style="border:0; filter: grayscale(100%) invert(92%) contrast(83%);" allowfullscreen="" loading="lazy"></iframe>
+                    
+                    <div class="absolute bottom-4 right-4 bg-rose-main text-white px-4 py-2 rounded-lg text-xs font-bold shadow-lg opacity-0 group-hover:opacity-100 transition-opacity">
+                        <i class="ph-bold ph-navigation-arrow"></i> <span class="lang" data-es="Ir al mapa" data-en="Go to map">Ir al mapa</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center text-xs text-gray-500 gap-4">
+                <p>&copy; 2026 laVieEnRose. <span class="lang" data-es="Todos los derechos reservados." data-en="All rights reserved.">Todos los derechos reservados.</span></p>
+                <div class="flex gap-4 text-xl">
+                    <a href="#" class="hover:text-rose-400 transition-colors"><i class="ph-fill ph-instagram-logo"></i></a>
+                    <a href="#" class="hover:text-blue-400 transition-colors"><i class="ph-fill ph-facebook-logo"></i></a>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- BOTÓN WHATSAPP FLOTANTE -->
+    <a href="https://wa.me/593988165498?text=Hola,%20quisiera%20ver%20el%20menú." target="_blank" class="fixed bottom-6 right-6 bg-[#25D366] text-white p-4 rounded-full shadow-lg hover:shadow-[0_10px_20px_rgba(37,211,102,0.4)] transition-all z-50 animate-bounce group">
+        <i class="ph-fill ph-whatsapp-logo text-3xl"></i>
+        <span class="absolute right-full mr-4 top-1/2 -translate-y-1/2 bg-white text-gray-800 px-3 py-1 rounded-lg text-xs font-bold shadow-md opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
+            <span class="lang" data-es="Pide aquí" data-en="Order here">Pide aquí</span>
+        </span>
+    </a>
+
+    <!-- SCRIPTS -->
+    <script>
+        // 1. SCROLL REVEAL (Efecto de aparición al bajar)
+        function reveal() {
+            var reveals = document.querySelectorAll(".reveal");
+            for (var i = 0; i < reveals.length; i++) {
+                var windowHeight = window.innerHeight;
+                var elementTop = reveals[i].getBoundingClientRect().top;
+                var elementVisible = 100;
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                }
+            }
+        }
+        window.addEventListener("scroll", reveal);
+
+        // 2. TOGGLE HORARIOS
+        function toggleHours() {
+            const dropdown = document.getElementById('hours-dropdown');
+            dropdown.classList.toggle('hidden');
+        }
+
+        // 3. LOGICA ESTADO ABIERTO/CERRADO (Ecuador Time)
+        function checkStatus() {
+            try {
+                // Hora actual en Ecuador (America/Guayaquil)
+                const now = new Date();
+                const formatter = new Intl.DateTimeFormat('en-US', {
+                    timeZone: 'America/Guayaquil',
+                    hour: 'numeric',
+                    minute: 'numeric',
+                    hour12: false
+                });
+                
+                const timeParts = formatter.format(now).split(':');
+                const hour = parseInt(timeParts[0]);
+                const minutes = parseInt(timeParts[1]);
+                const currentTime = hour + (minutes / 60);
+
+                // Horario: 8:30 (8.5) a 20:30 (20.5)
+                const openTime = 8.5; 
+                const closeTime = 20.5;
+
+                const isOpen = currentTime >= openTime && currentTime < closeTime;
+                
+                const dot = document.getElementById('status-dot');
+                const ping = document.getElementById('status-ping');
+                const text = document.getElementById('status-text');
+                const lang = document.getElementById('lang-text').innerText;
+
+                if (isOpen) {
+                    dot.className = "relative inline-flex rounded-full h-3 w-3 bg-green-500";
+                    ping.className = "animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75";
+                    text.innerText = lang === 'ES' ? "ABIERTO" : "OPEN";
+                    text.className = "block font-bold text-sm text-green-700";
+                } else {
+                    dot.className = "relative inline-flex rounded-full h-3 w-3 bg-red-500";
+                    ping.className = "hidden";
+                    text.innerText = lang === 'ES' ? "CERRADO" : "CLOSED";
+                    text.className = "block font-bold text-sm text-red-700";
+                }
+            } catch (e) {
+                console.log(e);
+            }
+        }
+
+        // 4. CAMBIO DE IDIOMA
+        function toggleLanguage() {
+            const btn = document.getElementById('lang-text');
+            const isSpanish = btn.innerText === 'ES';
+            const target = isSpanish ? 'en' : 'es';
+            
+            btn.innerText = isSpanish ? 'EN' : 'ES';
+
+            document.querySelectorAll('.lang').forEach(el => {
+                // Efecto de desvanecimiento simple
+                el.style.opacity = '0';
+                setTimeout(() => {
+                    if (el.dataset[target]) {
+                        el.innerText = el.dataset[target];
+                    }
+                    el.style.opacity = '1';
+                }, 200);
+            });
+            setTimeout(checkStatus, 200); // Actualizar texto de estado
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            reveal();
+            checkStatus();
+            setInterval(checkStatus, 60000); // Chequear cada minuto
+        });
+    </script>
+</body>
+</html>
